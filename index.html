@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>周玉冰 · AI 应用工程师</title>
+<meta name="description" content="周玉冰 — AI 应用工程师。把大模型、RAG 与 Agent 落到真实业务里的人。">
+<style>
+  :root{
+    --paper:#faf8f4;
+    --paper-2:#f2eee6;
+    --ink:#1e1c19;
+    --ink-2:#4a4640;
+    --ink-3:#8b8378;
+    --line:#e2dbcf;
+    --green:#2f5d50;
+    --green-soft:#e8efe9;
+    --clay:#a8432c;
+    --clay-soft:#f6eae5;
+    --radius:14px;
+    --maxw:880px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Noto Serif SC",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Georgia,serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.75;
+    font-size:16px;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,248,244,.86);
+    backdrop-filter:saturate(180%) blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+  .brand{font-weight:700;letter-spacing:.06em;font-size:15px}
+  .brand span{color:var(--green)}
+  nav ul{display:flex;gap:26px;list-style:none}
+  nav a{
+    color:var(--ink-2);text-decoration:none;font-size:13.5px;letter-spacing:.04em;
+    padding:4px 0;border-bottom:1.5px solid transparent;transition:.2s;
+  }
+  nav a:hover,nav a.on{color:var(--green);border-color:var(--green)}
+
+  /* ---------- hero ---------- */
+  header{padding:96px 0 72px}
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12.5px;letter-spacing:.12em;color:var(--clay);
+    background:var(--clay-soft);border-radius:100px;padding:6px 14px;margin-bottom:28px;
+  }
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--clay)}
+  h1{font-size:clamp(38px,7vw,64px);line-height:1.12;letter-spacing:-.01em;font-weight:700}
+  h1 em{font-style:normal;color:var(--green)}
+  .lede{
+    margin-top:26px;font-size:19px;line-height:1.85;color:var(--ink-2);max-width:640px;
+  }
+  .lede strong{color:var(--ink);font-weight:600;border-bottom:2px solid var(--green-soft)}
+  .lede + .lede{margin-top:16px}
+  .meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:34px;font-size:13.5px;color:var(--ink-3)}
+  .meta b{color:var(--ink-2);font-weight:600}
+  .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+  .btn{
+    display:inline-block;padding:11px 22px;border-radius:100px;font-size:14px;
+    text-decoration:none;transition:.2s;letter-spacing:.03em;
+  }
+  .btn-p{background:var(--green);color:#fff}
+  .btn-p:hover{background:#24483e;transform:translateY(-1px)}
+  .btn-s{background:transparent;color:var(--ink-2);border:1px solid var(--line)}
+  .btn-s:hover{border-color:var(--green);color:var(--green)}
+
+  /* ---------- sections ---------- */
+  section{padding:64px 0;border-top:1px solid var(--line)}
+  .eyebrow{
+    font-size:12px;letter-spacing:.18em;color:var(--ink-3);
+    text-transform:uppercase;margin-bottom:10px;
+  }
+  h2{font-size:27px;font-weight:700;letter-spacing:.01em;margin-bottom:30px}
+  h3{font-size:18px;font-weight:700;margin-bottom:8px}
+  p{color:var(--ink-2)}
+  .muted{color:var(--ink-3);font-size:14px}
+
+  /* about cards */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px 22px;transition:.25s;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 10px 30px -18px rgba(30,28,25,.35)}
+  .card .num{font-size:12px;letter-spacing:.14em;color:var(--clay);margin-bottom:12px}
+  .card p{font-size:14.5px;line-height:1.8}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:30px}
+  .stat{background:#fff;padding:22px 18px;text-align:center}
+  .stat b{display:block;font-size:26px;color:var(--green);font-weight:700;letter-spacing:-.01em}
+  .stat span{font-size:12.5px;color:var(--ink-3);letter-spacing:.04em}
+
+  /* skills */
+  .skills{display:grid;grid-template-columns:1fr 1fr;gap:26px 30px}
+  .sk h4{font-size:15.5px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:9px}
+  .sk .tag{
+    font-size:11px;color:var(--green);background:var(--green-soft);
+    padding:2px 8px;border-radius:4px;letter-spacing:.05em;font-weight:500;
+  }
+  .sk p{font-size:14px;line-height:1.78}
+
+  /* timeline */
+  .tl{position:relative;padding-left:26px}
+  .tl:before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:var(--line)}
+  .job{position:relative;padding-bottom:34px}
+  .job:last-child{padding-bottom:0}
+  .job:before{
+    content:"";position:absolute;left:-25px;top:8px;width:11px;height:11px;border-radius:50%;
+    background:var(--paper);border:2px solid var(--green);
+  }
+  .job .when{font-size:12.5px;color:var(--ink-3);letter-spacing:.06em;margin-bottom:4px}
+  .job .what{font-size:16.5px;font-weight:700;margin-bottom:8px}
+  .job ul{list-style:none}
+  .job li{font-size:14.5px;color:var(--ink-2);padding-left:16px;position:relative;margin-bottom:6px;line-height:1.75}
+  .job li:before{content:"—";position:absolute;left:0;color:var(--ink-3)}
+
+  /* projects */
+  .proj{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+    padding:30px 28px;margin-bottom:20px;
+  }
+  .proj-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:6px}
+  .proj-head h3{font-size:19px}
+  .proj-head .when{font-size:12.5px;color:var(--ink-3);letter-spacing:.05em}
+  .proj-sub{font-size:13px;color:var(--green);margin-bottom:18px;letter-spacing:.02em}
+  .block{margin-bottom:14px}
+  .block:last-child{margin-bottom:0}
+  .block .lb{
+    font-size:11.5px;letter-spacing:.12em;color:var(--clay);
+    display:block;margin-bottom:3px;font-weight:600;
+  }
+  .block p{font-size:14.5px;line-height:1.8}
+  .stack{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+  .stack span{
+    font-size:11.5px;color:var(--ink-2);background:var(--paper-2);
+    padding:3px 10px;border-radius:100px;letter-spacing:.03em;
+  }
+
+  /* note */
+  .note{
+    background:var(--green-soft);border-radius:var(--radius);padding:26px 26px;
+    border-left:3px solid var(--green);
+  }
+  .note p{font-size:15px;line-height:1.85;color:var(--ink-2)}
+  .note p + p{margin-top:12px}
+
+  /* contact */
+  .contact{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:30px}
+  .cc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+  .cc .k{font-size:11.5px;letter-spacing:.12em;color:var(--ink-3);margin-bottom:6px}
+  .cc .v{font-size:15px;font-weight:600;color:var(--ink);word-break:break-all}
+
+  footer{
+    border-top:1px solid var(--line);padding:34px 0 46px;
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;
+    font-size:12.5px;color:var(--ink-3);
+  }
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .rv.in{opacity:1;transform:none}
+
+  @media (max-width:720px){
+    .grid3,.skills,.contact{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr 1fr}
+    nav ul{display:none}
+    header{padding:64px 0 52px}
+    .proj{padding:24px 20px}
+  }
+  @media print{
+    nav,.acts{display:none}
+    body{background:#fff}
+    .rv{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">周玉冰 <span>·</span> AI 应用工程师</div>
+    <ul>
+      <li><a href="#about">自我介绍</a></li>
+      <li><a href="#skills">我的技能</a></li>
+      <li><a href="#path">工作经验</a></li>
+      <li><a href="#work">项目</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <div class="kicker"><span class="dot"></span>开放机会中 · 现居佛山 · 期望广州 / 深圳</div>
+    <h1>我为什么想<br>做<em>AI 产品</em></h1>
+    <p class="lede">
+      入行做的是嵌入式，后来在企业里做 AI 落地。慢慢发现<strong>模型能回答什么不难，难的是业务的人敢不敢信它</strong>——
+      比起"能不能跑通"，我更在意"有没有人愿意用第二次"。所以想往产品这一侧去。
+    </p>
+    <div class="meta">
+      <span><b>现在</b> 悍高集团 · AI 技术工程师</span>
+      <span><b>此前</b> 广联科技 · 软件工程师</span>
+      <span><b>坐标</b> 佛山（广佛通勤）</span>
+      <span><b>方向</b> AI 应用 / Agent / RAG</span>
+    </div>
+    <div class="acts">
+      <a class="btn btn-p" href="#contact">聊聊合作</a>
+      <a class="btn btn-s" href="#work">看项目</a>
+    </div>
+  </div>
+</header>
+
+<!-- 自我介绍 -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow rv">01 / About</div>
+    <h2 class="rv">自我介绍</h2>
+    <div class="grid3">
+      <div class="card rv">
+        <div class="num">起点</div>
+        <h3>从嵌入式走过来的人</h3>
+        <p>两年嵌入式出身，习惯把问题追到最后一行。这份较真后来带进了 AI 里。</p>
+      </div>
+      <div class="card rv">
+        <div class="num">怎么工作</div>
+        <h3>先问为什么，再写代码</h3>
+        <p>先拆场景——谁在用、卡在哪、值多少钱，再选方案。不做"先试试看"的 Demo。</p>
+      </div>
+      <div class="card rv">
+        <div class="num">在找什么</div>
+        <h3>想往产品和人这边靠</h3>
+        <p>最享受的不是"做出来"，而是"被用起来"。所以想离用户更近一点。</p>
+      </div>
+    </div>
+    <div class="stats rv">
+      <div class="stat"><b>300+</b><span>企业文档结构化</span></div>
+      <div class="stat"><b>≥90%</b><span>知识检索命中率</span></div>
+      <div class="stat"><b>20+</b><span>高频审批场景</span></div>
+      <div class="stat"><b>30%</b><span>流程周期缩短</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 我的技能 -->
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow rv">02 / Skills</div>
+    <h2 class="rv">我的技能</h2>
+    <div class="skills">
+      <div class="sk rv">
+        <h4>大模型应用 <span class="tag">Prompt / 选型</span></h4>
+        <p>ChatGPT / DeepSeek / Claude / 文心一言 调用与选型；Prompt 工程、上下文管理、模型评测，挑够用又省的一档。</p>
+      </div>
+      <div class="sk rv">
+        <h4>RAG 检索增强 <span class="tag">全链路</span></h4>
+        <p>解析 → 切片 → Embedding → 检索 → 重排，全链路都调过；Coze 内置检索 + 自建 Chroma。</p>
+      </div>
+      <div class="sk rv">
+        <h4>Agent 与工作流 <span class="tag">Coze / Dify</span></h4>
+        <p>Agent 架构与 Tool Calling；Coze / Dify 搭企业级 Agent 与工作流，也能用 LangChain 自建私有化方案。</p>
+      </div>
+      <div class="sk rv">
+        <h4>工程化交付 <span class="tag">Python / FastAPI</span></h4>
+        <p>Python + FastAPI 为主，懂 React 与 MySQL；正在用 Docker 容器化部署 AI 服务。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 工作经验 -->
+<section id="path">
+  <div class="wrap">
+    <div class="eyebrow rv">03 / Experience</div>
+    <h2 class="rv">工作经验</h2>
+    <div class="tl">
+      <div class="job rv">
+        <div class="when">2026.06 – 2026.08</div>
+        <div class="what">悍高集团股份有限公司 · AI 技术工程师</div>
+        <ul>
+          <li>探索并落地内部 AI 场景，设计 AI Agent、AI Skill 与智能工作流。</li>
+          <li>搭建企业智能助手、知识问答等应用，连接业务与技术。</li>
+          <li>负责内部推广与培训，推动 AI 真正被用起来。</li>
+        </ul>
+      </div>
+      <div class="job rv">
+        <div class="when">2023.06 – 2025.07</div>
+        <div class="what">广联科技有限公司 · 软件工程师</div>
+        <ul>
+          <li>嵌入式软件开发与软硬件联调，覆盖需求分析、系统调试到工程化交付。</li>
+          <li>跨团队协作推进产品研发与问题定位。</li>
+        </ul>
+      </div>
+      <div class="job rv">
+        <div class="when">2017.09 – 2022.07 · 教育背景</div>
+        <div class="what">厦门大学嘉庚学院 · 信息与计算科学 · 本科</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 项目 -->
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow rv">04 / Work</div>
+    <h2 class="rv">代表项目</h2>
+
+    <div class="proj rv">
+      <div class="proj-head">
+        <h3>企业级 AI 智能助手</h3>
+        <span class="when">2025.01 – 2025.02</span>
+      </div>
+      <div class="proj-sub">知识库 + OA 流程自动化 · 软件工程师</div>
+
+      <div class="block">
+        <span class="lb">为什么做</span>
+        <p>制度、资料、流程散落各处，员工查一份规定要问三个人。</p>
+      </div>
+      <div class="block">
+        <span class="lb">怎么判断</span>
+        <p>拆成两半——"找不到"用 RAG，"不知道找谁"用 Workflow；先啃最高频的 20+ 场景。</p>
+      </div>
+      <div class="block">
+        <span class="lb">做了什么</span>
+        <p>300+ 份文档结构化，沉淀 5000+ 知识节点；Workflow 覆盖 20+ 审批场景，FastAPI 打通前后端。</p>
+      </div>
+      <div class="block">
+        <span class="lb">结果</span>
+        <p>知识覆盖率与检索命中率 ≥ 90%，平均响应 ≤ 15s，流程处理周期缩短 ≥ 30%。</p>
+      </div>
+      <div class="stack">
+        <span>Coze</span><span>Workflow</span><span>RAG</span><span>Prompt Engineering</span><span>FastAPI</span><span>React</span><span>知识库构建</span>
+      </div>
+    </div>
+
+    <div class="proj rv">
+      <div class="proj-head">
+        <h3>AI 销售 SOP 智能陪练助手</h3>
+        <span class="when">2025.04 – 2025.06</span>
+      </div>
+      <div class="proj-sub">FastAPI + React + MySQL + LLM · 软件工程师</div>
+
+      <div class="block">
+        <span class="lb">为什么做</span>
+        <p>新人培养成本高，而真实客户不会给你练手机会。</p>
+      </div>
+      <div class="block">
+        <span class="lb">怎么判断</span>
+        <p>重点不是"聊得像不像客户"，而是训练—评估—复习的闭环。</p>
+      </div>
+      <div class="block">
+        <span class="lb">做了什么</span>
+        <p>30+ 款产品资料与 SOP 结构化，设计 30+ 客户 Persona 场景，训练数据全部落库。</p>
+      </div>
+      <div class="block">
+        <span class="lb">结果</span>
+        <p>把"师傅带徒弟"变成可追踪、可复制的数据资产。</p>
+      </div>
+      <div class="stack">
+        <span>React</span><span>FastAPI</span><span>MySQL</span><span>LLM API</span><span>Prompt Engineering</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 一点想法 -->
+<section id="note">
+  <div class="wrap">
+    <div class="eyebrow rv">05 / Note</div>
+    <h2 class="rv">一点想法</h2>
+    <div class="note rv">
+      <p><strong>关于 AI 落地：</strong>大多数做黄的 AI 项目，不是模型不强，是没人定义过"什么叫做成了"。</p>
+      <p><strong>关于我自己：</strong>想做的是"让技术真正被人用起来"——它既是工程问题，也是产品和运营问题。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 联系 -->
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow rv">06 / Contact</div>
+    <h2 class="rv">聊聊？</h2>
+    <div class="contact">
+      <div class="cc rv"><div class="k">邮箱</div><div class="v">your@email.com</div></div>
+      <div class="cc rv"><div class="k">微信</div><div class="v">your_wechat_id</div></div>
+      <div class="cc rv"><div class="k">小红书</div><div class="v">@你的账号</div></div>
+    </div>
+    <p class="muted rv">做 AI 落地、AI 产品，或想聊聊"能用但没人用"的项目，都欢迎找我。</p>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 周玉冰 · 用 Vibe Coding 一点点搭起来的</div>
+  <div>佛山 · 广佛通勤</div>
+</footer>
+
+<script>
+  // 滚动淡入
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+  // 导航高亮
+  const secs = [...document.querySelectorAll('section[id]')];
+  const links = [...document.querySelectorAll('nav a')];
+  window.addEventListener('scroll',()=>{
+    let cur = '';
+    secs.forEach(s=>{ if(window.scrollY >= s.offsetTop - 140) cur = s.id; });
+    links.forEach(a=>a.classList.toggle('on', a.getAttribute('href') === '#'+cur));
+  },{passive:true});
+</script>
+</body>
+</html>
